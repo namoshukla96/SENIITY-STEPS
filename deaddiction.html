@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sereniity Steps</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #4CAF50;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background: #333;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 15px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background: #575757;
+            transform: scale(1.1);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px #ccc;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label, form input, form select, form textarea, form button {
+            margin-bottom: 10px;
+        }
+
+        form input, form select, form textarea {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button, button {
+            background: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        form button:hover, button:hover {
+            background: #45a049;
+            transform: translateY(-5px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .resources ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resources li {
+            margin: 10px 0;
+        }
+
+        .resources a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .resources a:hover {
+            text-decoration: underline;
+            transform: translateX(5px);
+        }
+
+        .about {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            background: #f4f4f4;
+            flex-wrap: wrap;
+        }
+
+        .about img {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        .about-content {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* Progress Tracker */
+        progress {
+            width: 100%;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        progress::-webkit-progress-bar {
+            background: #f4f4f4;
+        }
+
+        progress::-webkit-progress-value {
+            background: #4CAF50;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about img {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 26px;
+            }
+
+            nav a {
+                padding: 10px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .about-content h2 {
+                font-size: 26px;
+            }
+
+            .about-content p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 15px;
+            }
+
+            nav {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            nav a {
+                padding: 10px;
+                text-align: center;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+
+            .about-content h2 {
+                font-size: 24px;
+            }
+
+            .about-content p {
+                font-size: 14px;
+            }
+
+            form input, form select, form textarea, form button {
+                font-size: 14px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+        <head>
+            <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
+            <style>
+                /* Pink button styling */
+                .btn-pink {
+                    display: inline-block;
+                    background: #FF33CC;    /* Bright pink color */
+                    color: white;
+                    padding: 12px 30px;
+                    font-size: 16px;
+                    text-decoration: none;
+                    border-radius: 50px;     /* Rounded edges */
+                    font-weight: bold;
+                    transition: 0.3s;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                    margin-top: 15px;        /* Space from the text */
+                }
+        
+                /* Hover effect */
+                .btn-pink:hover {
+                    background: #FF00AA;     /* Darker pink on hover */
+                    transform: translateY(-3px);
+                    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+                }
+                .therapy-title {
+                    text-align: center;       /* Center align */
+                    font-weight: bold;        /* Bold text */
+                    font-size: 28px;          /* Larger font size */
+                    margin: 20px 0;           /* Add space above and below */
+                    color: #333;              /* Dark gray color */
+                    .therapy-title, .counselling-title {
+                        text-align: center;       /* Center align */
+                        font-weight: bold;        /* Bold text */
+                        font-size: 28px;          /* Larger font size */
+                        margin: 20px 0;           /* Add space above and below */
+                        color: #333;              /* Dark gray color */
+                    }
+                    
+                }
+                .program-section {
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                    border-radius: 10px;
+                    transition: 0.3s;
+                    background: #fff;
+                    padding: 20px;
+                }
+                
+                .program-section:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+                }
+                
+                h2 {
+                    font-size: 28px;
+                    color: #333;
+                    margin-bottom: 15px;
+                }
+                
+                .btn-pink {
+                    display: inline-block;
+                    background: #FF33CC;        
+                    color: white;
+                    padding: 12px 30px;
+                    font-size: 16px;
+                    text-decoration: none;
+                    border-radius: 50px;
+                    font-weight: bold;
+                    transition: 0.3s;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                }
+                
+                .btn-pink:hover {
+                    background: #FF00AA;
+                    transform: translateY(-3px);
+                    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+                }
+                body {
+                    background: #ffffff;  /* Pure white background */
+                    color: #333; 
+                    font-family: Arial, sans-serif;
+                }
+                
+                .program-section {
+                    transition: 0.3s;
+                }
+                
+                .program-section:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+                }
+                
+                h1, h2, p {
+                    color: #333;
+                }
+                
+                .btn-pink {
+                    display: inline-block;
+                    background: #FF33CC;        
+                    color: white;
+                    padding: 12px 30px;
+                    font-size: 16px;
+                    text-decoration: none;
+                    border-radius: 50px;
+                    font-weight: bold;
+                    transition: 0.3s;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                }
+                
+                .btn-pink:hover {
+                    background: #FF00AA;
+                    transform: translateY(-3px);
+                    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+                }
+                body {
+                    background: #ffffff;  /* Pure white background everywhere */
+                    color: #333; 
+                    font-family: Arial, sans-serif;
+                }
+                
+                .program-section {
+                    transition: 0.3s;
+                    background: #ffffff;  /* Ensure white background for each section */
+                }
+                
+                .program-section:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+                }
+                
+                h1, h2, p {
+                    color: #333;
+                }
+                
+                .btn-pink {
+                    display: inline-block;
+                    background: #FF33CC;        
+                    color: white;
+                    padding: 12px 30px;
+                    font-size: 16px;
+                    text-decoration: none;
+                    border-radius: 50px;
+                    font-weight: bold;
+                    transition: 0.3s;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                }
+                
+                .btn-pink:hover {
+                    background: #FF00AA;
+                    transform: translateY(-3px);
+                    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+                }
+                .gallery {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 20px;
+                    padding: 20px;
+                    justify-content: center;
+                }
+                
+                .gallery img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                    transition: transform 0.3s;
+                    border: 3px solid #FF5733; /* Add border like the screenshot */
+                }
+                
+                .gallery img:hover {
+                    transform: scale(1.05);
+                    .gallery-container {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+                        padding: 20px;
+                        max-width: 1200px;
+                        margin: 0 auto;
+                    }
+                    
+                    .gallery-row {
+                        display: flex;
+                        justify-content: center;
+                        gap: 20px;
+                    }
+                    
+                    .gallery-row img {
+                        width: calc(33.33% - 20px); /* 3 images per row */
+                        height: auto;
+                        border: 4px solid #FF5733;  /* Border effect */
+                        border-radius: 8px;
+                        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                        transition: transform 0.3s;
+                    }
+                    
+                    .gallery-row img:hover {
+                        transform: scale(1.05);
+                    }
+                    
+                    /* For the "Call Us Now" button */
+                    .call-us {
+                        display: flex;
+                        justify-content: flex-end;
+                        padding-right: 20px;
+                    }
+                    
+                    .call-us img {
+                        width: 200px; 
+                        height: auto;
+                        cursor: pointer;
+                        transition: transform 0.3s;
+                    }
+                    
+                    .call-us img:hover {
+                        transform: scale(1.1);
+                    }
+                    
+                    /* Responsive Design */
+                    @media (max-width: 992px) {
+                        .gallery-row {
+                            flex-wrap: wrap;
+                        }
+                        .gallery-row img {
+                            width: calc(50% - 20px); /* 2 images per row on smaller screens */
+                        }
+                    }
+                    
+                    @media (max-width: 576px) {
+                        .gallery-row img {
+                            width: 100%; /* 1 image per row on small screens */
+                        }
+                        .call-us img {
+                            width: 100%;
+                        }
+                    }
+                    
+                }
+                * Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background: #ffffff;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border: 4px solid #FF5733;  /* Border effect */
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery img {
+                width: 100%;
+            }
+            * Media Queries for Responsive Design */
+        @media (min-width: 1200px) {
+            .gallery {
+                gap: 20px;
+            }
+
+            .gallery img {
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .gallery img {
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery img {
+                max-width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .gallery img {
+                max-width: 100%;
+            }
+        }
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+            }
+    
+            body {
+                background: #f4f4f4;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+            }
+    
+            body {
+                background: #f4f4f4;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+            }
+    
+            body {
+                background: #f4f4f4;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+    
+            .gallery {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2400px;
+                max-width: 1100px;
+                width: 300%;
+                padding: 20px;
+            }
+    
+            .gallery img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                transition: transform 0.3s;
+            }
+    
+            .gallery img:hover {
+                transform: scale(1.05);
+            }
+    
+            @media (max-width: 7680px) {
+                .gallery {
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                }
+            }
+            
+            }
+
+            }
+        </style>
+    </head>
+    <body>
+    
+  }
+</script>
+
+</body>
+</html>
+
+        }
+                
+            </style>
+        </head>
+        
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1> Serniity Steps</h1>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="program.html">Our Program</a>
+    <a href="#booking">Therapy Booking</a>
+    <a href="#resources">Resources</a>
+    <a href="#live-chat">Live Chat</a>
+    <a href="#progress">Progress Tracker</a>
+    <a href="#emergency">Emergency Support</a>
+    <a href="#about">About Us</a>
+    <a href="#enquiry-form" class="btn-pink">ENQUIRE NOW</a>
+   <a href ="#gallery"> Gallery</a>
+</nav>
+
+<div class="container">
+
+    <div id="booking" class="card">
+        <h2>Therapy & Counseling Booking</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
+            <label for="time">Time:</label>
+            <input type="time" id="time" required>
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+
+    <div id="resources" class="card resources">
+        <h2>Addiction Resources</h2>
+        <ul>
+            <li><a href="#">Alcohol Recovery Guide - eBook</a></li>
+        
+            <li><a href="#">Daily Affirmations for Recovery</a></li>
+        </ul>
+    </div>
+
+    <div id="live-chat" class="card">
+        <h2>Live Chat</h2>
+        <p>Chat with a counselor for instant support.</p>
+        <button onclick="alert('Starting Live Chat...')">Start Chat</button>
+    </div>
+
+    <div id="progress" class="card">
+        <h2>Progress Tracker</h2>
+        <progress value="60" max="100"></progress>
+        <p>60% Completed</p>
+    </div>
+</div>
+
+<div id="about" class="about">
+    <div class="about-content">
+        <h2>About Us</h2>
+        <p>We provide personalized care for addiction recovery.
+            The concept is to create an affordable addiction management program that integrates both online and offline support to help individuals overcome addiction. The online component features a mobile app offering personalized recovery plans, virtual support groups, educational resources, and progress tracking, accessible at any time and from anywhere. The offline component provides face-to-face interaction through local support groups, counseling sessions, workshops, and community events, which foster personal connections and hands-on learning. Our vision is to make addiction recovery support accessible and cost-effective for everyone, reducing addiction rates by providing comprehensive, low-cost resources that combine digital convenience with local, community-based support, ultimately helping individuals lead healthier, addiction-free lives.. </p>
+    </div>
+</div>
+<div style="background: #ffffff; padding: 60px 0;">
+<!-- Our Program Section -->
+<div id="program" class="about">
+    <div class="about-content">
+        <h2>Our Program</h2>
+        <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.8>
+    <div id="program" class="about" style="display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; padding: 40px;">
+
+    <!-- Therapy Section -->"
+            <div class="therapy-title ">Therapy sessions</div>
+            <img src= https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz5Uzb4lufhrpzoxLYg4VWqKy42YDh8n-MiQ&s>
+            <p> Our therapy sessions include individual counseling to address personal struggles, group therapy for peer support, and family therapy to rebuild relationships. 
+            <div>
+                <a href="#enquiry-form" class="btn-pink">ENQUIRE NOW</a>
+                <div class ="counselling-title">Counselling</div>
+            <img src=https://www.onetherapybrighton.com/wp-content/uploads/2018/02/Cartoon-Counselling-Session.jpg>
+            <p>At Serenity Steps, counseling sessions provide personalized support to help individuals address emotional challenges, develop coping strategies, and build resilience throughout their recovery journey.<p>
+<!-- "Enquire Now" Button -->
+<a href="#enquiry-form" class="btn-pink">ENQUIRE NOW</a>
+<!-- Our Gallery Section -->
+<div id="gallery" class="gallery-container">
+    <div class="gallery-container">
+        <div class="gallery-row">
+    <h2>Our Gallery</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src= "file:///C:/Users/dell/OneDrive/Pictures/DEADDICTION.png" alt="Therapy Session" width= "5000" height="200">
+        </div>
+        
+        
+        </body>
+        </html>
+</body>
+</html>
